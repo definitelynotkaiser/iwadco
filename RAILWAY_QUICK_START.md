@@ -21,10 +21,11 @@ git push -u origin main
 
 1. Pumunta sa [railway.app](https://railway.app)
 2. Mag-sign up o mag-login gamit ang GitHub account mo
-3. I-click ang "New Project"
+3. I-click ang "New Project" (sa top right o sa dashboard)
 4. Piliin ang "Deploy from GitHub repo"
 5. Piliin ang `iwadco` repository mo
 6. Hintayin na ma-detect ni Railway na PHP project ito
+7. **Makikita mo ang Web Service** - automatic na mag-create si Railway nito pagkatapos mag-connect ng GitHub repo
 
 ### 3. Magdagdag ng MySQL Database
 
@@ -37,6 +38,27 @@ git push -u origin main
 ### 4. I-configure ang Environment Variables
 
 **Mahalagang hakbang ito para makakonekta ang application sa database!**
+
+**📍 Saan makikita ang Web Service?**
+
+1. **Pumunta sa Railway Dashboard:**
+   - Pagkatapos mag-create ng project at mag-add ng MySQL, makikita mo ang Railway project dashboard
+   - Makikita mo ang dalawang services:
+     - **Web Service** (PHP/Application) - ito ang application mo
+     - **MySQL Service** (Database) - ito ang database
+
+2. **Paano makilala ang Web Service:**
+   - Karaniwang may pangalan na katulad ng project name o repository name
+   - May icon na web/globe (hindi database icon)
+   - Kapag na-deploy na, may URL na makikita (halimbawa: `https://your-app.up.railway.app`)
+   - May "Deployments" tab na makikita
+
+3. **Kung hindi mo makita:**
+   - Tiyakin na na-deploy na ang project mula sa GitHub
+   - Kapag nag-deploy ka from GitHub repo, automatic na mag-create si Railway ng web service
+   - Kung wala pa, i-check kung na-push na ba ang code sa GitHub
+
+**Ngayon, i-configure ang Environment Variables:**
 
 1. Sa Railway dashboard, i-click ang **web service** (hindi ang MySQL service)
 2. Pumunta sa **"Variables"** tab

@@ -75,7 +75,8 @@ table tr:hover { background: rgba(0,119,209,0.1); transform:scale(1.01); transit
 
 @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);} }
 
-.action-btn { padding:5px 10px; border:none; border-radius:5px; cursor:pointer; font-size:12px; margin:0 2px; transition:0.3s; }
+.action-btn, button { padding:5px 10px; border:none; border-radius:5px; cursor:pointer; font-size:12px; margin:0 2px; transition:0.3s; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+button:focus { outline:none; }
 .action-btn:hover { transform:scale(1.05); }
 .approve { background:#28a745; color:white; }
 .reject { background:#dc3545; color:white; }

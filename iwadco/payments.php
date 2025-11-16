@@ -45,8 +45,9 @@ table th { background:#0077d1; color:#fff; font-weight:500; position:sticky; top
 table tbody tr { border-bottom:1px solid #eee; transition:background 0.3s; }
 table tbody tr:hover { background:#dbe7f5; }
 
-.btn { padding:6px 12px; background:#0056a6; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:13px; transition:background 0.3s; text-decoration:none; }
-.btn:hover { background:#0077d1; }
+.btn, button { padding:6px 12px; background:#0056a6; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:13px; transition:background 0.3s; text-decoration:none; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+.btn:hover, button:hover { background:#0077d1; }
+button:focus { outline:none; }
 
 .search-filter { margin-top:15px; display:flex; flex-wrap:wrap; gap:15px; align-items:center; }
 .search-filter input, .search-filter select { padding:6px 10px; font-size:14px; border-radius:6px; border:1px solid #ccc; }

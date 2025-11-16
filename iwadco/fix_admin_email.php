@@ -47,8 +47,9 @@ if ($result && $result->num_rows > 0) {
         .info { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 15px 0; }
         .success { background: #d4edda; padding: 15px; border-radius: 5px; margin: 15px 0; color: green; }
         .error { background: #f8d7da; padding: 15px; border-radius: 5px; margin: 15px 0; color: red; }
-        button { background: #0056a6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #0077d1; }
+        button, .btn { background: #0056a6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+        button:hover, .btn:hover { background: #0077d1; }
+        button:focus, .btn:focus { outline: none; }
     </style>
 </head>
 <body>

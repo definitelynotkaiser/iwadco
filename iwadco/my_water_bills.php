@@ -66,8 +66,21 @@ unset($_SESSION['payment_success'], $_SESSION['payment_error']);
 <style>
 <?php
 // retain your entire CSS
-readfile(__DIR__ . "/my_water_bills_style.css"); // optional if you externalize CSS
+if(file_exists(__DIR__ . "/my_water_bills_style.css")) {
+    readfile(__DIR__ . "/my_water_bills_style.css");
+}
 ?>
+/* Global Button Fix */
+button, .btn, .btn-pay {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    cursor: pointer !important;
+}
+button:focus, .btn:focus, .btn-pay:focus {
+    outline: none !important;
+}
 </style>
 </head>
 <body>

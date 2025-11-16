@@ -128,7 +128,7 @@ h2 { margin-bottom: 6px; color: #333; }
     transition: transform 0.2s;
 }
 .show-password:hover { transform: translateY(-50%) scale(1.2); }
-.btn-login {
+.btn-login, button {
     width: 100%;
     padding: 12px;
     border: none;
@@ -139,7 +139,12 @@ h2 { margin-bottom: 6px; color: #333; }
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
+button:focus { outline: none; }
 .btn-login:hover { opacity: 0.9; }
 .signup-text { margin-top: 14px; font-size: 13px; color: #555; }
 .signup-text a { color: #0072ff; text-decoration: none; font-weight: bold; }

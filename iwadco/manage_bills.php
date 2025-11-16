@@ -77,7 +77,8 @@ table tr:hover { background:#dbe7f5; }
 .status-Paid { color:#27ae60; font-weight:bold; }
 .status-Overdue { color:#c0392b; font-weight:bold; }
 
-.action-btn { padding:5px 10px; margin-right:5px; border:none; border-radius:5px; cursor:pointer; color:#fff; text-decoration:none; }
+.action-btn, button { padding:5px 10px; margin-right:5px; border:none; border-radius:5px; cursor:pointer; color:#fff; text-decoration:none; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+button:focus { outline:none; }
 .action-paid { background:#27ae60; }
 .action-delete { background:#c0392b; }
 

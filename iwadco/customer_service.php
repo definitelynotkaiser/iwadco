@@ -66,8 +66,9 @@ input, textarea, select {
     pointer-events:auto;
 }
 textarea { resize: vertical; }
-button { padding:10px 20px; border:none; border-radius:6px; background:#0056a6; color:white; font-weight:600; cursor:pointer; transition:0.3s; }
-button:hover { background:#0077d1; }
+button, .btn { padding:10px 20px; border:none; border-radius:6px; background:#0056a6; color:white; font-weight:600; cursor:pointer; transition:0.3s; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+button:hover, .btn:hover { background:#0077d1; }
+button:focus, .btn:focus { outline:none; }
 
 .faq-item { border-bottom:1px solid #ddd; margin-bottom:10px; }
 .faq-question { cursor:pointer; padding:12px; background:#f0f4f8; border-radius:6px; font-weight:600; }

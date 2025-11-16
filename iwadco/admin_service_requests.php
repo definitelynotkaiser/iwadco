@@ -83,8 +83,9 @@ tr:hover { background:#f1f7ff; }
 .status.Rejected { background:#dc3545; color:#fff; }
 
 form select { padding:5px; border:1px solid #ccc; border-radius:5px; margin-right:5px; }
-form button { background:#0056a6; color:white; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; margin-top:3px; }
-form button:hover { background:#0077d1; }
+form button, button, .btn { background:#0056a6; color:white; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; margin-top:3px; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+form button:hover, button:hover, .btn:hover { background:#0077d1; }
+button:focus, .btn:focus { outline:none; }
 
 .back-btn { display:inline-block; margin-bottom:15px; text-decoration:none; color:#0056a6; font-weight:600; }
 .back-btn:hover { text-decoration:underline; }

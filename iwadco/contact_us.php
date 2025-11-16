@@ -51,7 +51,7 @@ form input, form textarea {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
-button {
+button, .btn {
   background: #0056a6;
   color: #fff;
   border: none;
@@ -59,9 +59,16 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
-button:hover {
+button:hover, .btn:hover {
   background: #0077d1;
+}
+button:focus, .btn:focus {
+  outline: none;
 }
 a.back {
   display: inline-block;

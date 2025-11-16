@@ -139,7 +139,7 @@ h2 {
 .show-password input {
     margin-right: 6px;
 }
-.btn-login {
+.btn-login, button {
     width: 100%;
     padding: 14px;
     border: none;
@@ -150,7 +150,12 @@ h2 {
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
+button:focus { outline: none; }
 .btn-login:hover {
     background-color: #0077d1;
     transform: translateY(-2px);

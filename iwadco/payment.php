@@ -159,7 +159,8 @@
     .field { margin-bottom:10px; display:flex; flex-direction:column;}
     label { font-size:14px; margin-bottom:4px;}
     input { padding:8px; border-radius:6px; border:1px solid #ccc;}
-    button { padding:10px; border:none; border-radius:6px; cursor:pointer;}
+    button, .btn { padding:10px; border:none; border-radius:6px; cursor:pointer; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none;}
+    button:focus, .btn:focus { outline:none; }
     .close { background:#ccc; color:#111; }
     .result { background:#f3f4f6; padding:8px; border-radius:6px; margin-top:8px;}
     .qr-toggle { display:flex; align-items:center; gap:6px; margin-bottom:8px;}

@@ -62,8 +62,9 @@ table th { background:#0077d1; color:#fff; font-weight:500; position:sticky; top
 table tbody tr { border-bottom:1px solid #eee; transition:background 0.3s; }
 table tbody tr:hover { background:#dbe7f5; }
 table td .btn { margin-right:5px; font-size:13px; }
-.btn { padding:6px 12px; background:#0056a6; color:#fff; border:none; border-radius:6px; cursor:pointer; transition:background 0.3s; text-decoration:none; }
-.btn:hover { background:#0077d1; }
+.btn, button { padding:6px 12px; background:#0056a6; color:#fff; border:none; border-radius:6px; cursor:pointer; transition:background 0.3s; text-decoration:none; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+.btn:hover, button:hover { background:#0077d1; }
+button:focus { outline:none; }
 input[type=text]{ padding:6px; width:200px; margin-right:10px; border-radius:5px; border:1px solid #ccc; }
 select{ padding:6px; border-radius:5px; border:1px solid #ccc; }
 .status-Pending { color:orange; font-weight:bold; }

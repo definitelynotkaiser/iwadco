@@ -19,8 +19,9 @@
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
       padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(3,6,23,0.6);}
     .top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    button{background:var(--accent);border:0;padding:8px 12px;border-radius:8px;
-      color:#042a2f;font-weight:600;cursor:pointer}
+    button, .btn{background:var(--accent);border:0;padding:8px 12px;border-radius:8px;
+      color:#042a2f;font-weight:600;cursor:pointer;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
+    button:focus, .btn:focus{outline:none}
     button.ghost{background:transparent;color:var(--accent);
       border:1px solid rgba(6,182,212,0.12)}
     .flex{display:flex;gap:12px}

@@ -84,8 +84,9 @@ table th { background:#0056a6; color:#fff; font-weight:500; position:sticky; top
 table tbody tr { border-bottom:1px solid #eee; transition:background 0.3s; }
 table tbody tr:hover { background:#f1f8ff; }
 table td .btn { margin-right:5px; }
-.btn { padding:6px 12px; background:#0056a6; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:13px; transition:background 0.3s; text-decoration:none; }
-.btn:hover { background:#0077d1; }
+.btn, button { padding:6px 12px; background:#0056a6; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:13px; transition:background 0.3s; text-decoration:none; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+.btn:hover, button:hover { background:#0077d1; }
+button:focus { outline:none; }
 footer { background:#0056a6; color:#fff; text-align:center; padding:15px; font-size:0.9rem; margin-top:auto; }
 .alert { padding:10px; border-radius:5px; margin:10px 0; }
 .alert-success { background:#d4edda; color:#155724; }

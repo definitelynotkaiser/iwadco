@@ -104,8 +104,9 @@ nav a.active { background:#e1efff; color:#0077d1; }
 form { background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); margin-bottom:30px; }
 form h3 { color:#0056a6; margin-bottom:15px; }
 input, select { width:100%; padding:10px; margin-bottom:15px; border:1px solid #ccc; border-radius:5px; }
-button { padding:10px 20px; background:#0056a6; color:#fff; border:none; border-radius:5px; cursor:pointer; }
-button:hover { background:#0077d1; }
+button, .btn { padding:10px 20px; background:#0056a6; color:#fff; border:none; border-radius:5px; cursor:pointer; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; }
+button:hover, .btn:hover { background:#0077d1; }
+button:focus, .btn:focus { outline:none; }
 .alert { padding:10px; margin-bottom:15px; border-radius:5px; }
 .success { background:#d4edda; color:#155724; }
 .error { background:#f8d7da; color:#721c24; }

@@ -77,8 +77,9 @@ body {font-family:'Segoe UI', Arial, sans-serif; margin:0; background:#f4f7fb; c
 .input-group label {font-size:14px; margin-bottom:5px;}
 .input-group input, .input-group textarea, .input-group select {padding:10px; border-radius:6px; border:1px solid #ccc; font-size:14px;}
 textarea {resize:none;}
-.btn-submit {padding:12px 20px; border:none; border-radius:8px; background:#0077cc; color:white; font-weight:bold; cursor:pointer; transition:0.3s;}
-.btn-submit:hover {opacity:0.9;}
+.btn-submit, button {padding:12px 20px; border:none; border-radius:8px; background:#0077cc; color:white; font-weight:bold; cursor:pointer; transition:0.3s; user-select:none; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none;}
+.btn-submit:hover, button:hover {opacity:0.9;}
+button:focus {outline:none;}
 
 /* Notification Styles */
 .notification {

@@ -151,13 +151,18 @@ th {
 }
 
 /* Buttons & Status */
-button {
+button, .btn {
     padding: 6px 14px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
+button:focus, .btn:focus { outline: none; }
 
 .btn-approve { background: #10b981; color: white; }
 .btn-reject { background: #ef4444; color: white; }

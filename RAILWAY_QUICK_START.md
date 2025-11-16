@@ -65,9 +65,18 @@ git push -u origin main
    ```
 
 5. **Settings (sa web service → Settings tab):**
-   - **Start Command:** `php -S 0.0.0.0:$PORT -t iwadco`
-   - **Root Directory:** Iwanang blangko (o `iwadco` kung kailangan)
-   - Tiyakin na naka-set ang Start Command
+   
+   **Option 1: Gamit ang Root Directory (RECOMMENDED)**
+   - **Root Directory:** `iwadco`
+   - **Start Command:** `php -S 0.0.0.0:$PORT`
+   - I-save ang settings
+   
+   **Option 2: Gamit ang Start Command lang**
+   - **Root Directory:** Iwanang blangko
+   - **Start Command:** `cd iwadco && php -S 0.0.0.0:$PORT`
+   - I-save ang settings
+   
+   **Paalala:** Pumili lang ng isang option. Mas madali ang Option 1.
 
 **Paalala:** Gamitin ang eksaktong syntax na `${{MySQL.Variable}}` - mahalaga ang `{{` at `}}`!
 
@@ -314,10 +323,12 @@ Ang application mo ay nasa: `https://your-app-name.up.railway.app`
 - I-check ang Railway logs para sa errors
 - Tiyakin na pareho ang project ng web service at MySQL service
 
-**404 errors?**
-- I-verify ang Start Command: `php -S 0.0.0.0:$PORT -t iwadco`
+**404 errors o "directory iwadco does not exist"?**
+- **Option 1:** I-set ang **Root Directory** sa `iwadco` at Start Command sa `php -S 0.0.0.0:$PORT`
+- **Option 2:** I-set ang Start Command sa `cd iwadco && php -S 0.0.0.0:$PORT` (Root Directory blangko)
 - I-check kung may `index.php` sa `iwadco/` folder
-- Tiyakin na tama ang Root Directory setting
+- I-verify na na-push na ang `iwadco` folder sa GitHub
+- I-redeploy ang service pagkatapos mag-edit ng settings
 
 **Blank page o errors?**
 - I-check ang Railway logs (web service → Logs tab)

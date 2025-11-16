@@ -1,0 +1,32 @@
+<?php
+/**
+ * Production Database Configuration
+ * 
+ * IMPORTANT: 
+ * 1. Rename this file to db_connect_production.php
+ * 2. Fill in your actual production database credentials
+ * 3. Never commit this file with real credentials to version control
+ * 4. Add db_connect_production.php to .gitignore
+ */
+
+// Production database credentials
+$host = 'localhost'; // Replace with your hosting provider's database host
+$user = 'your_database_username'; // Replace with your actual database username
+$pass = 'your_database_password'; // Replace with your actual database password
+$dbname = 'your_database_name'; // Replace with your actual database name
+
+// Alternative: Use environment variables (more secure)
+// $host = getenv('DB_HOST') ?: 'localhost';
+// $user = getenv('DB_USER') ?: 'root';
+// $pass = getenv('DB_PASS') ?: '';
+// $dbname = getenv('DB_NAME') ?: 'iwadco2_db';
+
+$conn = new mysqli($host, $user, $pass, $dbname);
+
+if ($conn->connect_error) {
+    // In production, don't expose detailed error messages
+    error_log("Database connection failed: " . $conn->connect_error);
+    die("Database connection failed. Please contact the administrator.");
+}
+?>
+

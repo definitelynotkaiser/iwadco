@@ -1,0 +1,29 @@
+# Database configuration files with sensitive credentials
+db_connect_production.php
+db_connect_local.php
+
+# SQL dump files (may contain sensitive data)
+*.sql
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Uploads directory (user-uploaded content)
+uploads/
+
+# Logs
+*.log
+error_log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+

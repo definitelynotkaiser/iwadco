@@ -1,8 +1,9 @@
-# Quick Start: Deploy to Railway
+# Quick Start: I-deploy sa Railway
 
-## 🚀 Fast Track (5 Steps)
+## 🚀 Mabilis na Paraan (5 Hakbang)
 
-### 1. Push to GitHub
+### 1. I-push sa GitHub
+
 ```bash
 git init
 git add .
@@ -11,91 +12,335 @@ git remote add origin https://github.com/yourusername/iwadco.git
 git push -u origin main
 ```
 
-### 2. Create Railway Project
+**Paalala:** Kung wala ka pang GitHub repository, gawin muna ito:
+1. Pumunta sa [github.com](https://github.com)
+2. Gumawa ng bagong repository na may pangalang `iwadco`
+3. Sundin ang commands sa itaas
 
-1. Go to [railway.app](https://railway.app)
-2. Sign up/login with GitHub
-3. Click "New Project" → "Deploy from GitHub repo"
-4. Select your `iwadco` repository
+### 2. Gumawa ng Railway Project
 
-### 3. Add MySQL Database
+1. Pumunta sa [railway.app](https://railway.app)
+2. Mag-sign up o mag-login gamit ang GitHub account mo
+3. I-click ang "New Project"
+4. Piliin ang "Deploy from GitHub repo"
+5. Piliin ang `iwadco` repository mo
+6. Hintayin na ma-detect ni Railway na PHP project ito
 
-1. In Railway project, click "+ New"
-2. Select "Database" → "Add MySQL"
-3. Railway creates database automatically
+### 3. Magdagdag ng MySQL Database
 
-### 4. Configure Environment Variables
+1. Sa Railway project dashboard, i-click ang "+ New" button
+2. Piliin ang "Database"
+3. I-click ang "Add MySQL"
+4. Hintayin na ma-create ni Railway ang database (makikita mo ang green status)
+5. **Mahalaga:** Tandaan ang pangalan ng MySQL service (halimbawa: "MySQL" o "mysql")
 
-In your **web service** → Variables tab, add:
-```
-DB_HOST=${{MySQL.MYSQLHOST}}
-DB_USER=${{MySQL.MYSQLUSER}}
-DB_PASS=${{MySQL.MYSQLPASSWORD}}
-DB_NAME=${{MySQL.MYSQLDATABASE}}
-DB_PORT=${{MySQL.MYSQLPORT}}
-```
+### 4. I-configure ang Environment Variables
 
-**Settings (in web service → Settings tab):**
-- Start Command: `php -S 0.0.0.0:$PORT -t iwadco`
-- Root Directory: Leave empty (or `iwadco` if needed)
-- Railway auto-detects PHP, but verify Start Command is set
+**Mahalagang hakbang ito para makakonekta ang application sa database!**
 
-### 5. Import Database & Deploy
+1. Sa Railway dashboard, i-click ang **web service** (hindi ang MySQL service)
+2. Pumunta sa **"Variables"** tab
+3. I-click ang **"New Variable"** button
+4. Idagdag ang mga sumusunod na variables **isa-isa**:
 
-**Import SQL (Choose one method):**
+   ```
+   DB_HOST=${{MySQL.MYSQLHOST}}
+   ```
+   *(Palitan ang "MySQL" kung iba ang pangalan ng MySQL service mo)*
 
-**Method A: Railway CLI (Easiest)**
-```bash
-# Install Railway CLI
-npm i -g @railway/cli
+   ```
+   DB_USER=${{MySQL.MYSQLUSER}}
+   ```
 
-# Login and link to your project
-railway login
-railway link
+   ```
+   DB_PASS=${{MySQL.MYSQLPASSWORD}}
+   ```
 
-# Get database credentials
-railway variables
+   ```
+   DB_NAME=${{MySQL.MYSQLDATABASE}}
+   ```
 
-# Import SQL file (replace with your actual file path)
-mysql -h $MYSQLHOST -u $MYSQLUSER -p$MYSQLPASSWORD $MYSQLDATABASE < "iwadco2_db (1).sql"
-```
+   ```
+   DB_PORT=${{MySQL.MYSQLPORT}}
+   ```
 
-**Method B: MySQL Client (MySQL Workbench/DBeaver)**
-1. Get connection details from Railway MySQL service → Variables tab
-2. Connect using those credentials
-3. Import `iwadco2_db (1).sql` file
-4. Run: `UPDATE users SET email = 'nishcruz8@gmail.com' WHERE username = 'admin';`
+5. **Settings (sa web service → Settings tab):**
+   - **Start Command:** `php -S 0.0.0.0:$PORT -t iwadco`
+   - **Root Directory:** Iwanang blangko (o `iwadco` kung kailangan)
+   - Tiyakin na naka-set ang Start Command
 
-**Method C: Railway Web Interface**
-1. Go to MySQL service → Data tab
-2. Copy contents of `iwadco2_db (1).sql`
-3. Paste and execute in SQL editor
-4. Fix admin email: `UPDATE users SET email = 'nishcruz8@gmail.com' WHERE username = 'admin';`
+**Paalala:** Gamitin ang eksaktong syntax na `${{MySQL.Variable}}` - mahalaga ang `{{` at `}}`!
 
-**Deploy:**
-- Railway auto-deploys on git push
-- Or deploy manually from dashboard
-- Check logs to ensure everything works
+### 5. I-import ang Database at I-deploy
 
-## ✅ Done!
+**ITO ANG PINAKA-MAHALAGANG HAKBANG!**
 
-Your app: `https://your-app-name.up.railway.app`
+Kailangan mong i-import ang `iwadco2_db (1).sql` file sa Railway MySQL database. Pumili ng isang paraan:
 
-**Verify it works:**
-- Visit your app URL
-- Try logging in with admin account
-- Check that database connection is working
+---
 
-## 🔧 Quick Fixes
+## 📥 DETALYADONG PARAAN NG DATABASE IMPORT
 
-**Database not connecting?**
-- Check environment variables use `${{MySQL.Variable}}` syntax
-- Verify MySQL service is running
-- Check Railway logs
+### **Paraan A: Gamit ang Railway CLI (Pinakamadali) ⭐ RECOMMENDED**
+
+**Step 1: I-install ang Railway CLI**
+
+1. I-install ang Node.js kung wala ka pa: [nodejs.org](https://nodejs.org)
+2. Buksan ang Command Prompt o Terminal
+3. I-type ang command:
+   ```bash
+   npm i -g @railway/cli
+   ```
+4. Hintayin na matapos ang installation
+
+**Step 2: I-login at i-link ang project**
+
+1. Sa terminal, i-type:
+   ```bash
+   railway login
+   ```
+2. Bubuksan ang browser para sa authentication - i-approve lang
+3. Pagkatapos, i-type:
+   ```bash
+   railway link
+   ```
+4. Piliin ang Railway project mo mula sa listahan
+
+**Step 3: Kunin ang database credentials**
+
+1. I-type:
+   ```bash
+   railway variables
+   ```
+2. Makikita mo ang lahat ng environment variables kasama ang MySQL credentials
+3. Kopyahin ang mga sumusunod:
+   - `MYSQLHOST`
+   - `MYSQLUSER`
+   - `MYSQLPASSWORD`
+   - `MYSQLDATABASE`
+   - `MYSQLPORT`
+
+**Step 4: I-import ang SQL file**
+
+1. Pumunta sa folder kung saan naka-save ang `iwadco2_db (1).sql` file
+2. I-type ang command (palitan ang values):
+   ```bash
+   mysql -h YOUR_MYSQLHOST -u YOUR_MYSQLUSER -pYOUR_MYSQLPASSWORD YOUR_MYSQLDATABASE < "iwadco2_db (1).sql"
+   ```
+   
+   **Halimbawa:**
+   ```bash
+   mysql -h mysql.railway.internal -u root -pMyPassword123 iwadco2_db < "iwadco2_db (1).sql"
+   ```
+   
+   **Paalala:** 
+   - Walang space pagkatapos ng `-p` at password
+   - Kung may error sa file name dahil sa spaces, gamitin ang quotes: `"iwadco2_db (1).sql"`
+   - Kung wala kang `mysql` command, i-install muna ang MySQL client
+
+**Step 5: Ayusin ang admin email**
+
+1. Pagkatapos ng import, kumonekta ulit sa database:
+   ```bash
+   mysql -h YOUR_MYSQLHOST -u YOUR_MYSQLUSER -pYOUR_MYSQLPASSWORD YOUR_MYSQLDATABASE
+   ```
+2. I-type ang SQL command:
+   ```sql
+   UPDATE users SET email = 'nishcruz8@gmail.com' WHERE username = 'admin';
+   ```
+3. I-type `exit` para lumabas
+
+---
+
+### **Paraan B: Gamit ang MySQL Client (MySQL Workbench/DBeaver)**
+
+**Step 1: I-download at i-install ang MySQL Client**
+
+- **MySQL Workbench:** [mysql.com/products/workbench](https://dev.mysql.com/downloads/workbench/)
+- **DBeaver:** [dbeaver.io](https://dbeaver.io/) (libre at mas madali)
+
+**Step 2: Kunin ang connection details mula sa Railway**
+
+1. Sa Railway dashboard, i-click ang **MySQL service**
+2. Pumunta sa **"Variables"** tab
+3. Kopyahin ang mga sumusunod:
+   - `MYSQLHOST` - halimbawa: `mysql.railway.internal` o external host
+   - `MYSQLPORT` - karaniwang `3306`
+   - `MYSQLUSER` - username
+   - `MYSQLPASSWORD` - password
+   - `MYSQLDATABASE` - database name
+
+**Step 3: Kumonekta sa database**
+
+**Para sa MySQL Workbench:**
+1. Buksan ang MySQL Workbench
+2. I-click ang "+" button para gumawa ng bagong connection
+3. Ilagay ang credentials:
+   - **Connection Name:** Railway MySQL
+   - **Hostname:** `MYSQLHOST` value
+   - **Port:** `MYSQLPORT` value
+   - **Username:** `MYSQLUSER` value
+   - **Password:** I-click ang "Store in Keychain" at ilagay ang password
+4. I-click ang "Test Connection" para i-verify
+5. I-click ang "OK" para i-save
+
+**Para sa DBeaver:**
+1. Buksan ang DBeaver
+2. I-click ang "New Database Connection" button
+3. Piliin ang "MySQL"
+4. Ilagay ang credentials sa connection settings
+5. I-click ang "Test Connection"
+6. I-click ang "Finish"
+
+**Step 4: I-import ang SQL file**
+
+**Para sa MySQL Workbench:**
+1. Kumonekta sa database
+2. I-click ang "Server" → "Data Import"
+3. Piliin ang "Import from Self-Contained File"
+4. I-browse at piliin ang `iwadco2_db (1).sql` file
+5. Sa "Default Target Schema," piliin ang database name
+6. I-click ang "Start Import"
+7. Hintayin na matapos (makikita mo ang success message)
+
+**Para sa DBeaver:**
+1. Right-click sa database name
+2. Piliin ang "SQL Editor" → "Open SQL Script"
+3. Buksan ang `iwadco2_db (1).sql` file
+4. I-click ang "Execute SQL Script" button (play icon)
+5. Hintayin na matapos
+
+**Step 5: Ayusin ang admin email**
+
+1. Sa SQL editor, i-type:
+   ```sql
+   UPDATE users SET email = 'nishcruz8@gmail.com' WHERE username = 'admin';
+   ```
+2. I-execute ang command
+3. I-verify na na-update:
+   ```sql
+   SELECT email FROM users WHERE username = 'admin';
+   ```
+
+---
+
+### **Paraan C: Gamit ang Railway Web Interface**
+
+**Step 1: Buksan ang Railway Data Tab**
+
+1. Sa Railway dashboard, i-click ang **MySQL service**
+2. Pumunta sa **"Data"** tab
+3. Makikita mo ang web-based SQL editor
+
+**Step 2: I-import ang SQL file**
+
+1. Buksan ang `iwadco2_db (1).sql` file sa text editor (Notepad, VS Code, etc.)
+2. Kopyahin ang LAHAT ng contents (Ctrl+A, Ctrl+C)
+3. Bumalik sa Railway Data tab
+4. I-paste ang SQL content sa SQL editor
+5. I-click ang "Run" o "Execute" button
+6. Hintayin na matapos (makikita mo ang success message)
+
+**Step 3: Ayusin ang admin email**
+
+1. Sa parehong SQL editor, i-type:
+   ```sql
+   UPDATE users SET email = 'nishcruz8@gmail.com' WHERE username = 'admin';
+   ```
+2. I-click ang "Run" button
+3. Dapat makita mo ang "1 row affected" message
+
+---
+
+## ✅ Pagkatapos ng Import
+
+**I-verify na successful ang import:**
+
+1. Sa SQL editor o client, i-run:
+   ```sql
+   SHOW TABLES;
+   ```
+   Dapat makita mo ang: `users`, `billing`, `application`
+
+2. I-check ang admin user:
+   ```sql
+   SELECT * FROM users WHERE username = 'admin';
+   ```
+   Dapat may 1 row na result
+
+3. I-verify ang email:
+   ```sql
+   SELECT email FROM users WHERE username = 'admin';
+   ```
+   Dapat: `nishcruz8@gmail.com` (hindi na may double @gmail.com)
+
+---
+
+## 🚀 I-deploy ang Application
+
+**Option 1: Automatic Deploy (Recommended)**
+- Kapag nag-push ka sa GitHub, automatic na mag-deploy si Railway
+- Hintayin lang na matapos ang deployment (makikita sa logs)
+
+**Option 2: Manual Deploy**
+1. Sa Railway dashboard, pumunta sa web service
+2. I-click ang "Deploy" button
+3. Hintayin na matapos
+
+**I-check ang logs:**
+- Pumunta sa web service → "Deployments" tab
+- I-click ang latest deployment
+- I-check kung may errors
+
+---
+
+## ✅ Tapos Na!
+
+Ang application mo ay nasa: `https://your-app-name.up.railway.app`
+
+**I-verify na gumagana:**
+1. Bisitahin ang app URL: `https://your-app-name.up.railway.app/login.php`
+2. Subukan mag-login gamit ang admin account
+3. I-check kung gumagana ang database connection
+4. Subukan ang iba pang features
+
+---
+
+## 🔧 Mabilis na Troubleshooting
+
+**Hindi makakonekta ang database?**
+- Tiyakin na tama ang syntax ng environment variables: `${{MySQL.Variable}}`
+- I-verify na running ang MySQL service (green status)
+- I-check ang Railway logs para sa errors
+- Tiyakin na pareho ang project ng web service at MySQL service
 
 **404 errors?**
-- Verify Start Command: `php -S 0.0.0.0:$PORT -t iwadco`
-- Check `index.php` exists in `iwadco/` folder
+- I-verify ang Start Command: `php -S 0.0.0.0:$PORT -t iwadco`
+- I-check kung may `index.php` sa `iwadco/` folder
+- Tiyakin na tama ang Root Directory setting
 
-**Need details?** See `RAILWAY_DEPLOYMENT.md`
+**Blank page o errors?**
+- I-check ang Railway logs (web service → Logs tab)
+- I-verify na na-import ang database
+- Tiyakin na tama ang database credentials
 
+**Kailangan ng mas detalyadong guide?** Tingnan ang `RAILWAY_DEPLOYMENT.md`
+
+---
+
+## 📝 Checklist
+
+Bago ka mag-deploy, tiyakin na:
+
+- [ ] Na-push na sa GitHub
+- [ ] Na-create na ang Railway project
+- [ ] Na-add na ang MySQL database
+- [ ] Na-configure na ang environment variables
+- [ ] Na-import na ang SQL file
+- [ ] Na-ayos na ang admin email
+- [ ] Na-verify na successful ang import
+- [ ] Na-deploy na ang application
+- [ ] Gumagana na ang login
+- [ ] Gumagana na ang database connection
+
+**Good luck sa deployment! 🚀**
